@@ -23,6 +23,14 @@ angular.module('shortly', [
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
     })
+    .when('/logout', {
+      templateUrl: function(){
+        localStorage.clear()
+        console.log("cleared " + localStorage)
+        return 'app/auth/signin.html';
+      },
+      controller: 'AuthController'
+    })
     // Your code here
 
     // We add our $httpInterceptor into the array
@@ -37,6 +45,7 @@ angular.module('shortly', [
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.shortly');
+      debugger;
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
@@ -55,7 +64,9 @@ angular.module('shortly', [
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+    debugger;
+    if (next.$$route && (next.$$route.originalPath !== '/signup') /* && next.$$route.authenticate*/ && !Auth.isAuth()) {
+      debugger;
       $location.path('/signin');
     }
   });
