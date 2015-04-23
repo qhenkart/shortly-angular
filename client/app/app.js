@@ -3,37 +3,71 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
+// .config(function($routeProvider, $httpProvider) {
+//   $routeProvider
+//     .when('/signin', {
+//       templateUrl: 'app/auth/signin.html',
+//       controller: 'AuthController'
+//     })
+//     .when('/signup', {
+//       templateUrl: 'app/auth/signup.html',
+//       controller: 'AuthController'
+//     })
+//     .when('/links', {
+//       templateUrl: 'app/links/links.html',
+//       controller: 'LinksController'
+//     })
+//     .when('/shorten', {
+//       templateUrl: 'app/shorten/shorten.html',
+//       controller: 'ShortenController'
+//     })
+//     .when('/logout', {
+//       templateUrl: function(){
+//         localStorage.clear()
+//         console.log("cleared " + localStorage)
+//         return 'app/auth/signin.html';
+//       },
+//       controller: 'AuthController'
+//     })
+//     .otherwise({
+//       templateUrl: 'app/links/links.html',
+//       redirectTo: '/links'
+//     })
+.config(function($stateProvider, $httpProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/links');
+
+  $stateProvider
+    .state('signin', {
+      url: '/signin',
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
-    .when('/signup', {
+    .state('signup', {
+      url: '/signup',
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    .when('/links', {
+    .state('links', {
+      url: '/links',
       templateUrl: 'app/links/links.html',
       controller: 'LinksController'
     })
-    .when('/shorten', {
+    .state('shorten', {
+      url: '/shorten',
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
     })
-    .when('/logout', {
+    .state('logout', {
+      url: '/logout',
       templateUrl: function(){
         localStorage.clear()
         console.log("cleared " + localStorage)
         return 'app/auth/signin.html';
       },
       controller: 'AuthController'
-    })
-    .otherwise({
-      templateUrl: 'app/links/links.html',
-      redirectTo: '/links'
     })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls

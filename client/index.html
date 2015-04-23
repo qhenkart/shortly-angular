@@ -10,16 +10,18 @@
 
     <nav class='navigation'>
       <ul>
-        <li><a href="#/links">Links</a></li>
-        <li><a href="#/shorten">Shorten</a></li>
-        <li><a href="#/logout">Logout</a></li>
+        <li><a ui-sref-active="selected" href="#/links">Links</a></li>
+        <li><a ui-sref-active="selected" href="#/shorten">Shorten</a></li>
+        <li><a ui-sref-active="selected" href="#/logout">Logout</a></li>
       </ul>
     </nav>
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
+    <div ui-view></div>
+
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
 
     <script src="app/auth/auth.js"></script>
     <script src="app/links/links.js"></script>
