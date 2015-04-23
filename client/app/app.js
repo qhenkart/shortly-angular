@@ -31,10 +31,10 @@ angular.module('shortly', [
       },
       controller: 'AuthController'
     })
-    // .otherwise({
-    //   templateUrl: 'app/links/links.html',
-    //   redirectTo: '/links'
-    // })
+    .otherwise({
+      templateUrl: 'app/links/links.html',
+      redirectTo: '/links'
+    })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
@@ -69,4 +69,6 @@ angular.module('shortly', [
       $location.path('/signin');
     }
   });
+
 });
+

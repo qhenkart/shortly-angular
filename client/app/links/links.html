@@ -1,11 +1,13 @@
 <div id='container' ng-controller="LinksController">
+<!-- <input type="text" my-on-key-down-call="callRestService()"> -->
   <ul>
-    <li class="link" ng-repeat="link in data.links">
+    <li class="link" ng-repeat="link in data.links | orderBy:'-visits'">
+
     <img src="assets/redirect_icon.png"/>
     <div class="title">{{link.title}}</div>
     <div class="visits"><span class="count">{{link.visits}}</span>Visits</div>
     <div class="original">{{link.url}}</div>
-    <div class="info"><a href='{{link.base_url +"/"+ link.code}}'>{{link.base_url +"/"+ link.code}}</a></div>
+    <div class="info"><a href='{{link.base_url +"/api/links/"+ link.code}}'>{{link.base_url +"/"+ link.code}}</a></div>
     </li>
   </ul>
 </div>

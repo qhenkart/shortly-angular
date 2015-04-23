@@ -93,8 +93,9 @@ h1 {
   margin-left: 55px;
 }
 
-form {
-  margin: 10px;
+input {
+  padding: 10px;
+  margin: 0 10px;
 }
 
 input {
@@ -104,7 +105,10 @@ input {
   padding: 5px;
   margin-bottom: 5px;
 }
-
+#submit {
+  width: 60px;
+  display:inline;
+}
 input[type=url] {
   display: inline
 }
@@ -114,16 +118,13 @@ input[type=url]:focus {
 }
 
 
-.error {
+form .ng-invalid {
   border: red solid 4px;
-  padding: 10px;
-  margin: 0 10px;
+
 }
 
-.clean {
+form .ng-pristine {
   border: #efe solid 2px;
-  padding: 10px;
-  margin: 0 10px;
 }
 
 .creator {
