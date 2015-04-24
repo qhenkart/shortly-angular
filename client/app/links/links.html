@@ -3,7 +3,7 @@
 <input type="search" size="40" placeholder="Search for Links" ng-model="search" id="search">
   <!-- <ul ng-repeat="data in data.links | filter:search"> -->
   <ul>
-    <li class="link" ng-repeat="link in data.links | orderBy:'-visits' | filter:search">
+    <li class="link fx-fade-down fx-speed-1000" ng-repeat="link in data.links | orderBy:'-visits' | filter:search" ng-mouseover="fx-fade-down">
 
     <img src="assets/redirect_icon.png"/>
     <div class="title">{{link.title}}</div>
